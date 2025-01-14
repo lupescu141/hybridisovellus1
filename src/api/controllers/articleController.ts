@@ -1,5 +1,5 @@
 import {NextFunction, Request, Response} from 'express';
-import {Article, Author} from '../../types/LocalTypes';
+import {Article} from '../../types/LocalTypes';
 import {
   createArticle,
   deleteArticle,
@@ -9,17 +9,29 @@ import {
 } from '../models/articleModel';
 import CustomError from '../../classes/CustomError';
 
-const articlesGet = (req: Request, res: Response<Article[]>) => {
-  const articles = getAllArticles();
-  res.json(articles);
+const articlesGet = (
+  req: Request,
+  res: Response<Article[]>,
+  next: NextFunction,
+) => {
+  try {
+    const articles = getAllArticles();
+    res.json(articles);
+  } catch (error) {
+    next(new CustomError((error as Error).message, 500));
+  }
 };
 
-const articleGet = (req: Request<{id: string}>, res: Response<Article>) => {
+const articleGet = (
+  req: Request<{id: string}>,
+  res: Response<Article>,
+  next: NextFunction,
+) => {
   try {
     const article = getArticle(Number(req.params.id));
     res.json(article);
   } catch (error) {
-    throw new CustomError((error as Error).message, 404);
+    next(new CustomError((error as Error).message, 404));
   }
 };
 
