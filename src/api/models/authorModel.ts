@@ -40,6 +40,7 @@ const updateAuthor = (
 };
 
 const deleteAuthor = (id: number | bigint): void => {
+  db.prepare('DELETE FROM articles WHERE author_id = ?').run(id);
   const stmt = db.prepare('DELETE FROM authors WHERE id = ?').run(id);
 
   if (stmt.changes === 0) {

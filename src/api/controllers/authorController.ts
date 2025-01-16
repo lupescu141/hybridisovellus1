@@ -16,7 +16,7 @@ const authorsGet = (
 ) => {
   try {
     const authors = getAllAuthors();
-    res.json(authors);
+    res.status(200).json(authors);
   } catch (error) {
     next(new CustomError((error as Error).message, 500));
   }

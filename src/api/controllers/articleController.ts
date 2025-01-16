@@ -58,6 +58,7 @@ const articlePut = (
       Number(req.params.id),
       req.body.title,
       req.body.description,
+      req.body.author_id,
     );
     res.json(article);
   } catch (error) {
@@ -71,7 +72,7 @@ const articleDelete = (
   next: NextFunction,
 ) => {
   try {
-    deleteArticle(Number(req.params.id));
+    deleteArticle(Number(req.params.id), Number(req.body.author_id));
     res.status(204).end();
   } catch (error) {
     next(new CustomError((error as Error).message, 500));

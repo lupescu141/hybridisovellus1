@@ -6,7 +6,7 @@ import randomstring from 'randomstring';
 // test that server is running
 describe('GET /', () => {
   it('should return 200 OK', async () => {
-    await request(app).get('/').expect(200);
+    await request(app).get('/api/v1').expect(200);
   });
 });
 
@@ -20,7 +20,7 @@ const article: Article = {
 
 // Create new author for testing
 const author: Author = {
-  id: 1,
+  id: 3,
   name: 'Test Author',
   email: randomstring.generate(7) + '@metropolia.fi',
 };
