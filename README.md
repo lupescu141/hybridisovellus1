@@ -71,3 +71,17 @@ Contributions are welcome! Please fork the repository and submit a pull request.
 ## License
 
 This project is licensed under the Apache License 2.0. See the [LICENSE](https://github.com/ilkkamtk/express-ts-sqlite/blob/main/LICENSE) file for details.
+
+POST /api/v1/articles 201 1.432 ms - 94
+POST /api/v1/articles 201 1.171 ms - 94
+GET /api/v1/articles 200 1.403 ms - 447
+GET /api/v1/articles/4 200 1.729 ms - 94
+PUT /api/v1/articles/4 200 1.516 ms - 82
+DELETE /api/v1/articles/4 204 1.135 ms - -
+DELETE /api/v1/authors/3 204 1.649 ms - -
+
+Test Suites: 1 failed, 1 passed, 2 total
+Tests: 12 passed, 12 total
+Snapshots: 0 total
+Time: 7.496 s, estimated 8 s
+Ran all test suites.
